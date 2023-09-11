@@ -1,0 +1,10 @@
+{$DOMAIN} {
+    root * /var/www/public
+    encode zstd gzip
+    php_fastcgi unix//var/run/php/php-fpm.sock
+    file_server
+}
+
+adminer.{$DOMAIN} {
+    reverse_proxy adminer:8080
+}
